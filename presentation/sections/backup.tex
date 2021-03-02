@@ -1,0 +1,79 @@
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+\xsection*{myblue}{Back-up}[extras/pr_ilc_cavity_resized]
+
+\begin{frame}{Fit in a non-SM scenario}
+    Assume $57.7\% \to 42.7\%$ $BR(H\to b\bar{b})$, $21.8\% \to 36.8\%$ $BR(H\to W^+W^-)$.
+    \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.3\textwidth}
+    \includegraphics[width=\textwidth, keepaspectratio]
+        {plot_factory/toys_multinomial_changed/H_bb}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+    \includegraphics[width=\textwidth, keepaspectratio]
+        {plot_factory/toys_multinomial_changed/H_WW}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+    \includegraphics[height=0.9\textheight, keepaspectratio]
+        {plot_factory/changed_br_estimates}
+    \end{column}
+    \end{columns}
+    \end{frame}
+
+\begin{frame}{Expected counts per (category, BR) pair}
+  \begin{columns}[c, onlytextwidth]
+  \begin{column}{0.5\textwidth}
+  Removed ILC overlay particles.
+  \includegraphics[height=0.8\textheight]
+      {plot_factory/overlay_free_probability_matrix}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+  With overlay, categories not adapted yet.
+  \includegraphics[height=0.8\textheight]
+      {plot_factory/default_probability_matrix}
+  \end{column}
+  \end{columns}
+  \end{frame}
+
+\begin{frame}{Effect of overlay particles on the fit}
+  All fits on Higgsstrahlung events without additional background events. \\
+  Category definitions are \texttt{not} adapted to the scenario with overlay events.
+  \begin{columns}[c, onlytextwidth]
+  \begin{column}{0.6\textwidth}
+  \includegraphics[width=0.8\textwidth, keepaspectratio]
+      {plot_factory/br_relative_error}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+  \includegraphics[height=0.85\textheight]
+      {plot_factory/br_estimates}
+  \end{column}
+  \end{columns}
+  \end{frame}
+
+\begin{frame}{A fit with categories that are too correlated}
+  With a highly correlated category definition/fit, the uncertainties of the \texttt{MINUIT} fit \\
+  are huge, and details in the likelihood function definition matter.
+  \begin{columns}[c, onlytextwidth]
+  \begin{column}{0.35\textwidth}
+  \includegraphics[height=0.85\textheight]
+      {plot_factory/highly_correlated_probability_matrix}
+  \end{column}
+  \begin{column}{0.28\textwidth}
+  \includegraphics[width=\textwidth]
+      {plot_factory/highly_correlated}
+  \end{column}
+  \begin{column}{0.35\textwidth}
+  \includegraphics[height=0.85\textheight]
+      {plot_factory/highly_correlated_br_estimates}
+  \end{column}
+  \end{columns}
+  \end{frame}
+
+\begin{frame}{Category definitions}
+    \inputminted[fontsize=\scriptsize,tabsize=2,breaklines]{python}{../img/extras/categories.py}
+\end{frame}
+
+\input{sections/building_njets} % Fabricio
+
+\setcounter{framenumber}{\value{finalframe}}

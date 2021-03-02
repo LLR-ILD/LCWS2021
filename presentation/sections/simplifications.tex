@@ -1,0 +1,26 @@
+\xsection{myblue}{Simplifications}
+
+\begin{frame}
+  \frametitle{Current simplifications}
+  
+  Reconstructed events from the new $\sqrt{s} = 250$~\GeV~SetA mass production (\texttt{ILD\_l5\_o1\_v02}, \texttt{v02-02}).
+  \begin{itemize}
+    \item So far, only using the signal (Higgsstrahlung).
+    \begin{itemize}
+      \item $\geq 100$k simulated events/decay mode.
+     \end{itemize}
+    \item $ZH \rightarrow \nu \bar{\nu}H$, so no confusion between $Z$ and $H$ at this stage.
+    \item MC-Veto on overlay particles (and $\texttt{LCFIPlus}$ re-vertexing on remaining PFOs).
+    \begin{itemize}
+      \item Not necessary, but should redo some category boundaries (see backup).
+     \end{itemize}
+    %\item Current "sample selection" is Higgs decay mode independent. \todo[inline]{Verify}
+    %  \begin{itemize}
+    %    \item[$\rightarrow$] Simplifies the minimization cost function.
+    %  \end{itemize}
+  \end{itemize}
+  \textbf{Assumption for the fit (later):}
+  $\sigma_{ZH}^{\tn{unpol.}} \approx 200$~fb, 2000~fb$^{-1}$ H-20 scenario, \\
+  catch 10~\% of the signal $\rightarrow$ $O(40,000)$ Higgs events.
+
+  \end{frame}
