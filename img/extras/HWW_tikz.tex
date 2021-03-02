@@ -1,0 +1,74 @@
+\tikzset{main node/.style={circle,draw,inner sep=20pt},}
+\tikzset{box node/.style={rectangle,draw,inner sep=14pt},}
+
+\begin{tikzpicture}
+                \tikzstyle{every node}=[font=\fontsize{30}{30}\selectfont]
+                \node[font=\fontsize{50}{50}\selectfont,label={\Huge expect $\sim$ 22\% of total events},main node] (0) {H $\to$ WW}; % 21.756% of events
+                \node[box node] (8) [right=8cm of 0,anchor=west]  {light\_quark};
+                \node[box node] (7) [above=2.7cm of 8.west,anchor=west]  {tau};
+                \node[box node] (6) [above=2.7cm of 7.west,anchor=west]  {aa};
+                \node[box node] (5) [above=2.7cm of 6.west,anchor=west]  {aZ};
+                \node[box node] (4) [above=2.7cm of 5.west,anchor=west]  {e2e2};
+                \node[box node] (3) [above=2.7cm of 4.west,anchor=west]  {bb};
+                \node[box node] (2) [above=2.7cm of 3.west,anchor=west]  {bb\_tight};
+                \node[box node] (1) [above=2.7cm of 2.west,anchor=west]  {cc};
+
+                \node[box node] (9)  [below=2.7cm of 8.west,anchor=west]   {light\_quark2};
+                \node[box node] (10) [below=2.7cm of 9.west,anchor=west]   {Isolep1};
+                \node[box node] (11) [below=2.7cm of 10.west,anchor=west]  {Isolep2};
+                \node[box node] (12) [below=2.7cm of 11.west,anchor=west]  {Isolep\_many};
+                \node[box node] (13) [below=2.7cm of 12.west,anchor=west]  {Isophoton1};
+                \node[box node] (14) [below=2.7cm of 13.west,anchor=west]  {Isophoton\_many};
+                \node[box node] (15) [below=2.7cm of 14.west,anchor=west]  {rest};
+
+                %Lines
+                \draw[line width=0.624mm,->] (0.east) -- (1.west);
+                \draw[line width=0.007mm,->] (0.east) -- (2.west);
+                \draw[line width=0.282mm,->] (0.east) -- (3.west);
+                % \draw[line width=1.346mm,->] (0.east) -- (4.west);
+                \draw[line width=0.087mm,->] (0.east) -- (5.west);
+                % \draw[line width=0.844mm,->] (0.east) -- (6.west);
+                \draw[line width=0.976mm,->] (0.east) -- (7.west);
+                \draw[line width=6.02mm,->] (0.east) -- (8.west);
+                \draw[line width=3.823mm,->] (0.east) -- (9.west);
+                \draw[line width=6.541mm,->] (0.east) -- (10.west);
+                \draw[line width=0.836mm,->] (0.east) -- (11.west);
+                \draw[line width=0.001mm,->] (0.east) -- (12.west);
+                \draw[line width=0.817mm,->] (0.east) -- (13.west);
+                \draw[line width=0.018mm,->] (0.east) -- (14.west);
+                \draw[line width=1.723mm,->] (0.east) -- (15.west);
+
+            \end{tikzpicture}
+
+
+%             \begin{tikzpicture}
+%                 \node[label={Total events=},main node] (0) {\huge $H\to WW$};
+%                 \node[box node] (6) [right=5cm of 0]  {j2\_l0\_b1i};
+%                 \node[box node] (5) [above=of 6]  {j1};
+%                 \node[box node] (4) [above=of 5]  {j0\_l2};
+%                 \node[box node] (3) [above=of 4]  {j0\_l01};
+%                 \node[box node] (2) [above=of 3]  {aZ};
+%                 \node[box node] (1) [above=of 2]  {e2e2};
+
+%                 \node[box node] (7) [below=of 6]    {j2\_l0\_c1i};
+%                 \node[box node] (8) [below=of 7]    {j2\_l0\_b0\_c0};
+%                 \node[box node] (9) [below=of 8]    {j2\_l1};
+%                 \node[box node] (10) [below=of 9]   {j2\_l2i};
+%                 \node[box node] (11) [below=of 10]  {j3};
+%                 \node[box node] (12) [below=of 11]  {j4};
+
+%                 %Lines
+%                 % \draw[line width=0.0mm,->] (0.east) -- (1.west);
+%                 \draw[line width=0.087mm,->] (0.east) -- (2.west);
+%                 \draw[line width=3.647mm,->] (0.east) -- (3.west);
+%                 \draw[line width=0.152mm,->] (0.east) -- (4.west);
+%                 \draw[line width=1.346mm,->] (0.east) -- (5.west);
+%                 \draw[line width=0.19mm,->] (0.east) -- (6.west);
+%                 \draw[line width=0.844mm,->] (0.east) -- (7.west);
+%                 \draw[line width=7.928mm,->] (0.east) -- (8.west);
+%                 \draw[line width=4.123mm,->] (0.east) -- (9.west);
+%                 \draw[line width=0.515mm,->] (0.east) -- (10.west);
+%                 \draw[line width=0.486mm,->] (0.east) -- (11.west);
+%                 \draw[line width=2.438mm,->] (0.east) -- (12.west);
+
+%             \end{tikzpicture}
