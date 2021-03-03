@@ -72,25 +72,26 @@ def covariance_plot(data):
     fig.savefig(FIG_PATH / "highly_correlated.png")
 
 
-def many_minimizer_plot(data):
-    minimization_choices = dict((
-        ("Gaussian LSQ", fs.gaussian_minimization),
-        ("Gaussian LSQ - (0,1) limits", fs.gaussian_minimization_with_limits),
-        ("Gaussian LSQ w binomial unc.", fs.gaussian_minimization_binomial_error),
-        ("Gaussian LSQ w binomial unc. - (0,1) limits", fs.gaussian_minimization_with_limits_binomial_error),
-        ("Multinomial", fs.binomial_minimization),
-        ("Multinomial - (0,1) limits", fs.binomial_minimization_with_limits),
-        ("Poisson", fs.poisson_minimization),
-    ))
+minimization_choices = dict((
+    ("Gaussian LSQ", fs.gaussian_minimization),
+    ("Gaussian LSQ - (0,1) limits", fs.gaussian_minimization_with_limits),
+    ("Gaussian LSQ w binomial unc.", fs.gaussian_minimization_binomial_error),
+    ("Gaussian LSQ w binomial unc. - (0,1) limits", fs.gaussian_minimization_with_limits_binomial_error),
+    ("Multinomial", fs.binomial_minimization),
+    ("Multinomial - (0,1) limits", fs.binomial_minimization_with_limits),
+    ("Poisson", fs.poisson_minimization),
+))
+
+def many_minimizer_plot(data, prefix=""):
     m, bin_counts_models = {}, {}
     for k, do_minimization in minimization_choices.items():
         m[k], bin_counts_models[k] = do_minimization(data, N_DATA)
 
     fig = br_estimates_plot(m, data, N_DATA)
-    fig.savefig(FIG_PATH / "many_br_estimates.png")
+    fig.savefig(FIG_PATH / f"{prefix}many_br_estimates.png")
 
     fig = relative_error_plot(m, data, N_DATA, no_legend=True)
-    fig.savefig(FIG_PATH / "many_br_relative_error.png")
+    fig.savefig(FIG_PATH / f"{prefix}many_br_relative_error.png")
 
 
 def multinomial_minimizer_plot(data, prefix=""):
@@ -103,16 +104,27 @@ def multinomial_minimizer_plot(data, prefix=""):
     fig.savefig(FIG_PATH / f"{prefix}br_relative_error.png")
 
 
+def highly_correlated_fit():
+    highly_corr_data = load_data(
+        data_str=str(Path(__file__).parent / "data/highly_correlated"))
+    covariance_plot(highly_corr_data)
+
+
+    m, bin_counts_models = {}, {}
+    for k, do_minimization in minimization_choices.items():
+        m[k], bin_counts_models[k] = do_minimization(highly_corr_data, N_DATA)
+
+    fig = br_estimates_plot(m, highly_corr_data, N_DATA)
+    fig.set_size_inches(5, 6)
+    fig.savefig(FIG_PATH / f"highly_correlated_many_br_estimates.png")
+
+
 def main():
     data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free"))
     many_minimizer_plot(data)
     multinomial_minimizer_plot(data)
 
-    highly_correlated_data = load_data(
-        data_str=str(Path(__file__).parent / "data/highly_correlated"))
-    covariance_plot(highly_correlated_data)
-    multinomial_minimizer_plot(highly_correlated_data,
-                       prefix="highly_correlated_")
+    highly_correlated_fit()
 
 
 if __name__ == "__main__":
