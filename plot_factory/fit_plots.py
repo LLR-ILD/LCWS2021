@@ -69,7 +69,7 @@ def covariance_plot(data):
     ax.imshow(corr, cmap=plt.get_cmap("bwr"))
     ax.set_title("Correlations")
     fig.tight_layout()
-    fig.savefig(FIG_PATH / "highly_correlated.png")
+    return fig
 
 
 minimization_choices = dict((
@@ -103,11 +103,15 @@ def multinomial_minimizer_plot(data, prefix=""):
     fig = relative_error_plot(m, data, N_DATA)
     fig.savefig(FIG_PATH / f"{prefix}br_relative_error.png")
 
+    fig = covariance_plot(data)
+    fig.savefig(FIG_PATH / "default_correlations.png")
+
 
 def highly_correlated_fit():
     highly_corr_data = load_data(
         data_str=str(Path(__file__).parent / "data/highly_correlated"))
-    covariance_plot(highly_corr_data)
+    fig = covariance_plot(highly_corr_data)
+    fig.savefig(FIG_PATH / "highly_correlated.png")
 
 
     m, bin_counts_models = {}, {}
