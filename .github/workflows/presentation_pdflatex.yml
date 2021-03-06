@@ -13,6 +13,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: presentation.tex
+          args: -latexoption=-shell-escape
       - name: Commit to orphan branch
         run: |
           git checkout --orphan gh-action-result/pdflatex
