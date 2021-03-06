@@ -12,12 +12,12 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: presentation/main.tex
+          root_file: presentation.tex
       - name: Commit to orphan branch
         run: |
           git checkout --orphan gh-action-result/pdflatex
           git rm -rf .
-          git add main.pdf
+          git add presentation/main.pdf
           git -c user.name='GitHub Action' -c user.email='action@github.com' commit -m "Built paper"
       - name: Push changes
         uses: ad-m/github-push-action@master
