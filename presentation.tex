@@ -1,8 +1,8 @@
 \documentclass[10pt, aspectratio=169]{beamer}
 \usepackage[french,noconfigs]{babel}
-\usepackage{beamerx}
+\usepackage{presentation/beamerx}
   \setbeamercovered{invisible}
-\usepackage{jonas}
+\usepackage{presentation/jonas}
 % \usepackage[colorinlistoftodos,textsize=small,shadow]{todonotes}
 \usepackage{minted}
 
@@ -10,8 +10,8 @@
 \usetikzlibrary{positioning}
 
 
-\graphicspath{{../img/}{../img/beamerx/}{img/fabricio}}
-\newcommand*\InputExtras[1]{\input{../img/extras/#1}}
+\graphicspath{{img/}{img/beamerx/}}
+\newcommand*\InputExtras[1]{\input{img/extras/#1}}
 
 
 \title[ILD Analysis/Software Meeting]
@@ -22,11 +22,11 @@
 
 \begin{document}
   \maketitle
-  \input{sections/outline}
-  \input{sections/introduction}
-  \input{sections/simplifications}
-  \input{sections/motivate_categories}
-  \input{sections/optimization}
-  \input{sections/conclusion}
-  \input{sections/backup}
+  \input{presentation/sections/outline}
+  \input{presentation/sections/introduction}
+  \input{presentation/sections/simplifications}
+  \input{presentation/sections/motivate_categories}
+  \input{presentation/sections/optimization}
+  \input{presentation/sections/conclusion}
+  \input{presentation/sections/backup}
 \end{document}
