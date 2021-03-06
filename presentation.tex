@@ -1,2 +1,32 @@
-\RequirePackage{import}
-\import{presentation/}{main.tex}
+\documentclass[10pt, aspectratio=169]{beamer}
+\usepackage[french,noconfigs]{babel}
+\usepackage{presentation/beamerx}
+  \setbeamercovered{invisible}
+\usepackage{presentation/jonas}
+% \usepackage[colorinlistoftodos,textsize=small,shadow]{todonotes}
+\usepackage{minted}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+
+\graphicspath{{img/}{img/beamerx/}}
+\newcommand*\InputExtras[1]{\input{img/extras/#1}}
+
+
+\title[ILD Analysis/Software Meeting]
+  {A combined fit to the Higgs Branching Ratios at ILD}
+      [combined Higgs BR fit]
+\author[Jonas, Fabricio]{Vincent Boudry, Jean-Claude Brient, \emph{Fabricio Jimenez}, \emph{Jonas Kunath} (LLR)}
+\date{\today}
+
+\begin{document}
+  \maketitle
+  \input{presentation//sections/outline}
+  \input{presentation//sections/introduction}
+  \input{presentation//sections/simplifications}
+  \input{presentation//sections/motivate_categories}
+  \input{presentation//sections/optimization}
+  \input{presentation//sections/conclusion}
+  \input{presentation//sections/backup}
+\end{document}
