@@ -59,7 +59,7 @@ def uncertainty_toy_study(data, minimization_procedure, toy_dir,
         ax.set_title(br_name)
         # ax.axvline(data.X0[data.x_names.index(br_name)], color="grey",
         ax.axvline(fit_starting_values[br_name], color="grey",
-            linestyle=":",
+            linestyle=":", linewidth=2, zorder=3,
             label="SM BR")
         bins = 20
         _, edges, _ = ax.hist(toy_minima[:,i], bins,
