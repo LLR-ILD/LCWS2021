@@ -26,3 +26,9 @@
 
 **/_minted-*/**
 presentation.pdf
+
+# Version control the toy plots only on an opt-in basis.
+**/toys_*/*.png
+!**/toys_*/H_bb.png
+!**/toys_*cheat_train_test/H_Zγ.png
+!**/toys_*changed/H_WW.png
