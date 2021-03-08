@@ -60,7 +60,7 @@ def uncertainty_toy_study(data, minimization_procedure, toy_dir,
         # ax.axvline(data.X0[data.x_names.index(br_name)], color="grey",
         ax.axvline(fit_starting_values[br_name], color="grey",
             linestyle=":", linewidth=2, zorder=3,
-            label="SM BR")
+            label=f"{fit_starting_values[br_name]:0.5f} SM BR")
         bins = 20
         _, edges, _ = ax.hist(toy_minima[:,i], bins,
             label="\n".join([f"Minima from {n_toys} fits",
@@ -68,10 +68,10 @@ def uncertainty_toy_study(data, minimization_procedure, toy_dir,
                               "(MC2, Multinomial draws)",]),
             alpha=.8, color="C1", density=True)
         ax.axvline(br[i], color="black",
-            label=f"EECF: Minimum={br[i]:.5f}")
+            label=f"{br[i]:0.5f} EECF Minimum")
         x = np.linspace(edges[0], edges[-1], 1000)
         ax.plot(x, gauss(x, br[i], br_err[i]),
-            label=f"EECF: σ={br_err[i]:.5f}")
+            label=f"{br_err[i]:0.5f} σ from EECF")
         plt.legend(title="\n".join([
                 "EECF: Minuit fit on",
                 "expected event counts (MC2)",]))
