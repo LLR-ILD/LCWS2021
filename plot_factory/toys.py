@@ -57,21 +57,24 @@ def uncertainty_toy_study(data, minimization_procedure, toy_dir,
     for i, br_name in enumerate(param_names):
         fig, ax = plt.subplots(figsize=(4, 4))
         ax.set_title(br_name)
+        # ax.axvline(data.X0[data.x_names.index(br_name)], color="grey",
         ax.axvline(fit_starting_values[br_name], color="grey",
-            linestyle=":", label="Fit starting value")
+            linestyle=":",
+            label="SM BR")
         bins = 20
         _, edges, _ = ax.hist(toy_minima[:,i], bins,
-            label=f"Minima from {n_toys} fits\non toy counts\n(drawn from Multinomial)",
+            label="\n".join([f"Minima from {n_toys} fits",
+                              "on toy counts",
+                              "(MC2, Multinomial draws)",]),
             alpha=.8, color="C1", density=True)
-        # ax.axvline(br[i], color="black",
-        #     label=f"Minuit fit on expected event count: Minimum={br[i]:.5f}")
-        # x = np.linspace(edges[0], edges[-1], 1000)
-        # ax.plot(x, gauss(x, br[i], br_err[i]),
-        #     label=f"Minuit fit on expected event count: σ={br_err[i]:.5f}")
+        ax.axvline(br[i], color="black",
+            label=f"EECF: Minimum={br[i]:.5f}")
         x = np.linspace(edges[0], edges[-1], 1000)
-        ax.plot(x, gauss(x, toy_minima[:,i].mean(), br_err[i]),
-            label=f"Unc. of Minuit fit on\nexpected event count:\nσ={br_err[i]:.5f}.")
-        plt.legend()
+        ax.plot(x, gauss(x, br[i], br_err[i]),
+            label=f"EECF: σ={br_err[i]:.5f}")
+        plt.legend(title="\n".join([
+                "EECF: Minuit fit on",
+                "expected event counts (MC2)",]))
         fig.savefig(toy_dir / f"{br_name.replace('→', '_')}.png")
 
 
