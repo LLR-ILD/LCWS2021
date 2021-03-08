@@ -43,9 +43,9 @@ def gauss(x, mu, sigma):
 def uncertainty_toy_study(data, minimization_procedure, toy_dir,
         n_toys = 10_000):
     print(f"Run {toy_dir.name} toys.")
+    single_min, _ = minimization_procedure(data, N_DATA)
     toy_minima = get_toy_minima(data, N_DATA, n_toys,
         minimization_procedure)
-    single_min, _ = minimization_procedure(data, N_DATA)
     param_names = single_min.parameters
     br, br_err = get_val_and_err(single_min, param_names, toy_dir.name)
 
