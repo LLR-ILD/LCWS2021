@@ -34,12 +34,14 @@ def load_normalized_columns(path):
     return matrix
 
 
-def load_data(data_str=data_default, brs=None, different_X0=None):
+def load_data(data_str=data_default, brs=None, different_X0=None,
+        cheat_train_test=False):
     data_folder = Path(data_str)
     if brs is None:
         brs = np.fromiter(default_brs.values(), dtype=float)
     M = load_normalized_columns(data_folder / "train.txt")
-    y_generator_matrix = load_normalized_columns(data_folder / "test.txt")
+    test_txt = "train.txt" if cheat_train_test else "test.txt"
+    y_generator_matrix = load_normalized_columns(data_folder / test_txt)
 
     data = {}
     data["M"]  = M

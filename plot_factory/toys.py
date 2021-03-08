@@ -79,11 +79,15 @@ def uncertainty_toy_study(data, minimization_procedure, toy_dir,
 
 
 def main():
-    data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free"))
-    minimization_procedure = fs.binomial_minimization_with_limits
-    toy_dir = FIG_PATH / "toys_multinomial"
-    toy_dir.mkdir(exist_ok=True, parents=True)
-    uncertainty_toy_study(data, minimization_procedure, toy_dir)
+    for cheat_train_test, postfix in [(False, ""), (True, "_cheat_train_test")]:
+        data = load_data(
+            data_str=str(Path(__file__).parent / "data/overlay_free"),
+            cheat_train_test=cheat_train_test,
+        )
+        minimization_procedure = fs.binomial_minimization_with_limits
+        toy_dir = FIG_PATH / f"toys_multinomial{postfix}"
+        toy_dir.mkdir(exist_ok=True, parents=True)
+        uncertainty_toy_study(data, minimization_procedure, toy_dir)
 
 
 if __name__ == "__main__":
