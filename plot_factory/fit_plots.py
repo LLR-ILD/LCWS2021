@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from pathlib import Path
 
 from fitting_util.prepare import prepare_data, get_val_and_err, shift_x
 import fitting_util.fit_setups as fs
-from load_data import load_data
+from load_data import default_brs, load_data
 from paths import FIG_PATH, N_DATA
 
 
@@ -72,6 +73,27 @@ def covariance_plot(data):
     return fig
 
 
+def make_bias_table(min_result, fit_starting_values):
+    def h_to_latex(h_str):
+        return "$"+(h_str
+            ).replace("→μμ", "\to \mu\mu"
+            ).replace("→ττ", "\to \tau\tau"
+            ).replace("→Zγ", "\to Z\gamma"
+            ).replace("→γγ", "\to \gamma\gamma"
+            ).replace("→", "\to "
+            )+"$"
+    param_names = min_result.parameters
+    br, br_err = get_val_and_err(min_result, param_names, "bias_table")
+
+    pd.DataFrame({
+            "SM BR": [100*fit_starting_values[br] for br in param_names],
+            "minimum": 100*br,
+            "$\sigma$": 100*br_err,
+            }, index=list(map(h_to_latex, param_names)),
+        ).to_latex(buf=(FIG_PATH / "bias_table.tex"),
+                   float_format="%0.3f", escape=False)
+
+
 minimization_choices = dict((
     ("Gaussian LSQ", fs.gaussian_minimization),
     ("Gaussian LSQ - (0,1) limits", fs.gaussian_minimization_with_limits),
@@ -105,6 +127,8 @@ def multinomial_minimizer_plot(data, prefix=""):
 
     fig = covariance_plot(data)
     fig.savefig(FIG_PATH / "default_correlations.png")
+
+    make_bias_table(m["Multinomial"], default_brs)
 
 
 def highly_correlated_fit():
