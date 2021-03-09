@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
+from fitting_util.comparison_with_others import comparison_with_others
 from fitting_util.prepare import prepare_data, get_val_and_err, shift_x
 import fitting_util.fit_setups as fs
 from load_data import default_brs, load_data
@@ -126,7 +127,11 @@ def multinomial_minimizer_plot(data, prefix=""):
     fig.savefig(FIG_PATH / f"{prefix}br_relative_error.png")
 
     fig = covariance_plot(data)
-    fig.savefig(FIG_PATH / "default_correlations.png")
+    fig.savefig(FIG_PATH / f"{prefix}default_correlations.png")
+
+    fig = comparison_with_others(m, data,
+        draw_lines=True, compare_to_global_couplings=True)
+    fig.savefig(FIG_PATH / f"{prefix}comparison_with_others.png")
 
     make_bias_table(m["Multinomial"], default_brs)
 

@@ -99,6 +99,38 @@
   \end{columns}
   \end{frame}
 
+\begin{frame}{Comparison with global coupling fits}
+  \label{comparison_with_global}
+  \begin{columns}[c, onlytextwidth]
+  \begin{column}{0.55\textwidth}
+  \begin{itemize}
+      \item {[1], [2]} use existing analyses and combine them
+          to extract a combined sensitivity for the Higgs boson couplings.
+      \item {[1]} scaled to the H-20 ILC250 scenario.
+      \item \textit{Multinomial} is our approach.
+      \begin{itemize}
+          \item A single analysis
+                directly fitting the branching ratios to data.
+          \item Expressed as couplings for comparison.
+          \item Remember: So far signal-only.
+      \end{itemize}
+      \item[$\rightarrow$] Not a legitimate comparison.
+          But gives hope that the results stay competitive
+          even without the simplifications.
+  \end{itemize}
+  \end{column}
+  \begin{column}{0.45\textwidth}
+    \includegraphics[width=\textwidth, keepaspectratio]
+        {plot_factory/comparison_with_others}
+  \end{column}
+  \end{columns}
+  \vspace{\baselineskip}
+  [1] J Tian, K Fujii~\href{https://www.sciencedirect.com/science/article/pii/S2405601415006161}
+      {\color{llblue} \textit{Measurement of Higgs boson couplings at the International Linear Collider}}.
+  [2] SFitter~\href{https://inspirehep.net/literature/1209590}
+      {\color{llblue} \textit{Measuring Higgs Couplings at a Linear Collider}}.
+  \end{frame}
+
 \begin{frame}{Category definitions}
     \inputminted[fontsize=\scriptsize,tabsize=2,breaklines]{python}{img/extras/categories.py}
 \end{frame}
