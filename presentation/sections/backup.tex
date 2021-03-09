@@ -73,15 +73,37 @@
   \end{columns}
   \end{frame}
 
+  \begin{frame}{Bias from MC sample size}
+    \label{backup_bias_mc_limited}
+    {%\small
+      Originally, we only used 50k events per branching ratio
+      for each \texttt{MC1}, \texttt{MC2}.
+      The bias from limited MC samples is visible
+      (SM~BR~$\neq$~EECF~minimum).
+      Larger MC samples help (next slide).
+    }
+    \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.5\textwidth}
+    \includegraphics[height=0.7\textheight, keepaspectratio]
+        {plot_factory/toys_multinomial_original_stats/H_bb}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{table}
+        \caption{Results of a \texttt{MINUIT} fit
+          on the expected event counts. In \%.}
+        {%\resizebox{\textwidth}{!}{
+        \InputTex{plot_factory/bias_table_original_stats.tex}
+      }\end{table}
+    \end{column}
+    \end{columns}
+    \end{frame}
+
 \begin{frame}{Bias from MC sample size}
-  \label{backup_bias_mc_limited}
-  {\small
-    Currently, we only use 50k events per branching ratio
-    for each \texttt{MC1}, \texttt{MC2}.
-    The bias from limited MC samples is visible
-    (SM~BR~$\neq$~EECF~minimum).
-    Subsequent iterations of the analysis should use larger samples
-    that reduce the bias.
+  {%\small
+    Here, \texttt{MC1}, \texttt{MC2} are each based on
+    200k events per branching ratio,
+    and another 1M simulated events with SM Higgs BRs.
+    The bias is almost gone.
   }
   \begin{columns}[c, onlytextwidth]
   \begin{column}{0.5\textwidth}
