@@ -3,7 +3,8 @@
 \begin{frame}{Optimization - Setup}
   \begin{columns}[c,onlytextwidth]
   \begin{column}{0.55\textwidth}
-  BRs from minimization through {\color{llblue}\href{https://github.com/scikit-hep/iminuit}{iminuit}}.
+  BRs from minimization through
+  \texttt{MINUIT}/{\color{llblue}\href{https://github.com/scikit-hep/iminuit}{iminuit}}.
   \begin{itemize}
     \item $\vec{S} = M \cdot \vec{B} = \vec{f}(\vec{B})$, with
     \begin{itemize}
@@ -46,22 +47,6 @@
   \begin{column}{0.4\textwidth}
   \includegraphics[height=0.99\textheight, width=0.95\textwidth, keepaspectratio]
       {plot_factory/br_estimates}
-  \end{column}
-  \end{columns}
-  \end{frame}
-
-\begin{frame}{Optimization - Results}
-  \begin{columns}[c, onlytextwidth]
-  \begin{column}{0.6\textwidth}
-  Effect of the likelihood definition on the uncertainties.
-
-  \includegraphics[width=0.8\textwidth, keepaspectratio]
-      {plot_factory/many_br_relative_error}
-
-  \end{column}
-  \begin{column}{0.4\textwidth}
-  \includegraphics[height=0.99\textheight, width=0.95\textwidth, keepaspectratio]
-      {plot_factory/many_br_estimates}
   \end{column}
   \end{columns}
   \end{frame}

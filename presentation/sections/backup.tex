@@ -4,6 +4,7 @@
 \xsection*{myblue}{Back-up}[extras/pr_ilc_cavity_resized]
 
 \begin{frame}{Expected counts per (category, BR) pair}
+  \label{overlay_expected_matrix_counts}
   \begin{columns}[c, onlytextwidth]
   \begin{column}{0.5\textwidth}
   Removed ILC overlay particles.
@@ -19,6 +20,7 @@
   \end{frame}
 
 \begin{frame}{Effect of overlay particles on the fit}
+  \label{overlay_effect_on_fit}
   All fits on Higgsstrahlung events without additional background events. \\
   Category definitions are \texttt{not} adapted to the scenario with overlay events.
   \begin{columns}[c, onlytextwidth]
@@ -29,6 +31,25 @@
   \begin{column}{0.4\textwidth}
   \includegraphics[height=0.85\textheight]
       {plot_factory/br_estimates}
+  \end{column}
+  \end{columns}
+  \end{frame}
+
+\begin{frame}{Optimization - Likelihood function}
+  \label{many_likelihoods_optimizations}
+  \begin{columns}[c, onlytextwidth]
+  \begin{column}{0.6\textwidth}
+  Effect of the likelihood fct definition on the uncertainties.
+  The highest BR, $H \to b\bar{b}$, benefits most
+  from the multinomial description.
+
+  \includegraphics[width=0.8\textwidth, keepaspectratio]
+      {plot_factory/many_br_relative_error}
+
+  \end{column}
+  \begin{column}{0.4\textwidth}
+  \includegraphics[height=0.99\textheight, width=0.95\textwidth, keepaspectratio]
+      {plot_factory/many_br_estimates}
   \end{column}
   \end{columns}
   \end{frame}
