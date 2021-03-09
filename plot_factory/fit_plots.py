@@ -37,7 +37,7 @@ def relative_error_plot(m, data, n_data, no_legend=False):
         y, y_err = get_val_and_err(mm, param_names, m_name)
         Deltas = y_err / y / 2 # Factor 2 to go from BR or CS to coupling.
         ax.scatter(x, Deltas, marker="*", color=f"C{i+1}",  label=m_name)
-    ax.set_ylabel("$\Delta_X \colon g_X = g_X^{SM}(1 + \Delta_X)$")
+    ax.set_ylabel("$\Delta_X = g_X / g_X^{SM} - 1$")
     ax.set_xticks(br_idx)
     ax.set_xticklabels(param_names, rotation=90)
     if not no_legend:
