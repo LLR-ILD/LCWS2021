@@ -74,7 +74,7 @@ def covariance_plot(data):
     return fig
 
 
-def make_bias_table(min_result, fit_starting_values):
+def make_bias_table(min_result, fit_starting_values, table_name="bias_table"):
     def h_to_latex(h_str):
         return "$"+(h_str
             ).replace("→μμ", "\to \mu\mu"
@@ -91,7 +91,7 @@ def make_bias_table(min_result, fit_starting_values):
             "minimum": 100*br,
             "$\sigma$": 100*br_err,
             }, index=list(map(h_to_latex, param_names)),
-        ).to_latex(buf=(FIG_PATH / "bias_table.tex"),
+        ).to_latex(buf=(FIG_PATH / f"{table_name}.tex"),
                    float_format="%0.3f", escape=False)
 
 
@@ -135,6 +135,12 @@ def multinomial_minimizer_plot(data, prefix=""):
 
     make_bias_table(m["Multinomial"], default_brs)
 
+    smaller_data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free"))
+    m_smaller = {"Multinomial": fs.binomial_minimization(smaller_data, N_DATA)[0]}
+    make_bias_table(m_smaller["Multinomial"], default_brs,
+        table_name="bias_table_original_stats")
+
+
 
 def highly_correlated_fit():
     highly_corr_data = load_data(
@@ -153,7 +159,7 @@ def highly_correlated_fit():
 
 
 def main():
-    data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free"))
+    data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free_higher_stats"))
     many_minimizer_plot(data)
     multinomial_minimizer_plot(data)
 

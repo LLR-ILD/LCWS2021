@@ -58,7 +58,7 @@ def intro_sample_construction(data):
 
 
 def main():
-    data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free"))
+    data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free_higher_stats"))
     intro_sample_construction(data)
 
 

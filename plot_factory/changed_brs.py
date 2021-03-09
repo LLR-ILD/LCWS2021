@@ -22,7 +22,7 @@ changed_brs = np.array(list({
 
 
 def main():
-    data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free"),
+    data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free_higher_stats"),
         brs=changed_brs,
     )
     minimization_procedure = fs.binomial_minimization_with_limits
