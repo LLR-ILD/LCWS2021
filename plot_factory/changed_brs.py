@@ -25,14 +25,15 @@ def main():
     data = load_data(data_str=str(Path(__file__).parent / "data/overlay_free_higher_stats"),
         brs=changed_brs,
     )
+    m = {"Multinomial": fs.binomial_minimization_with_limits(data, N_DATA)[0]}
+    fig = br_estimates_plot(m, data, N_DATA)
+    fig.savefig(FIG_PATH / "changed_br_estimates.png")
+
     minimization_procedure = fs.binomial_minimization_with_limits
     toy_dir = FIG_PATH / "toys_multinomial_changed"
     toy_dir.mkdir(exist_ok=True, parents=True)
     uncertainty_toy_study(data, minimization_procedure, toy_dir)
 
-    m = {"Multinomial": fs.binomial_minimization_with_limits(data, N_DATA)[0]}
-    fig = br_estimates_plot(m, data, N_DATA)
-    fig.savefig(FIG_PATH / "changed_br_estimates.png")
 
 
 if __name__ == "__main__":
