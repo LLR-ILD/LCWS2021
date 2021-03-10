@@ -31,4 +31,5 @@ presentation.pdf
 **/toys_*/*.png
 !**/toys_*/H_bb.png
 !**/toys_*cheat_train_test/H_Zγ.png
+!**/toys_*cheat_train_test/H_ZZ*.png
 !**/toys_*changed/H_WW.png

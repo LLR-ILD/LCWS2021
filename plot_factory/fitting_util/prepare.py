@@ -6,7 +6,8 @@ def prepare_data(m, data):
         m_dict = m
     else:
         m_dict = {"MIGRAD": m}
-    param_names = set().union(*(set(v.parameters) for v in m_dict.values()))
+    # param_names = set().union(*(set(v.parameters) for v in m_dict.values()))
+    param_names = ["H→cc", "H→bb", "H→μμ", "H→ττ", "H→Zγ", "H→gg", "H→γγ", "H→ZZ*", "H→WW"]  # Temporary patch.
     try:
         param_names = sorted(param_names, key=str.lower)
     except:
@@ -28,6 +29,14 @@ def get_val_and_err(mm, param_names, m_name=""):
                 f"Poisson-type likelihoods! {m_name=}, {sum(y)=}")
         y_err = y_err / sum(y)
         y = y / sum(y)
+
+    multinomial_patch_required = len(param_names) - 1 == len(mm.values)
+    if multinomial_patch_required:
+        assert 1 == sum(np.isnan(y)) == sum(np.isnan(y))
+        y[np.isnan(y)] = 1 - np.nansum(y)
+        cov = np.array(mm.covariance.tolist())
+        y_err[np.isnan(y_err)] = cov.sum()**.5
+
     return y, y_err
 
 

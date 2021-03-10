@@ -68,7 +68,7 @@ def covariance_plot(data):
             plt.text(text_x, text_y,
                 f"{val:4.3f}",
                 ha="center", va="center", color=color)
-    ax.imshow(corr, cmap=plt.get_cmap("bwr"))
+    ax.imshow(corr, cmap=plt.get_cmap("bwr"), vmin=-1, vmax=1)
     ax.set_title("Correlations")
     fig.tight_layout()
     return fig
@@ -80,10 +80,13 @@ def make_bias_table(min_result, fit_starting_values, table_name="bias_table"):
             ).replace("→μμ", "\to \mu\mu"
             ).replace("→ττ", "\to \tau\tau"
             ).replace("→Zγ", "\to Z\gamma"
+            ).replace("→ZZ*", "\to ZZ^*"
             ).replace("→γγ", "\to \gamma\gamma"
             ).replace("→", "\to "
             )+"$"
     param_names = min_result.parameters
+    if "H→ZZ*" not in param_names:
+        param_names = [p for p in param_names] + ["H→ZZ*"]
     br, br_err = get_val_and_err(min_result, param_names, "bias_table")
 
     pd.DataFrame({
