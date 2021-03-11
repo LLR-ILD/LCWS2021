@@ -48,8 +48,7 @@ def relative_error_plot(m, data, n_data, no_legend=False):
     return fig
 
 
-def covariance_plot(data):
-    minimizer = fs.binomial_minimization(data, N_DATA)[0]
+def correlations_plot(minimizer):
     labels = minimizer.covariance.to_table()[-1]
     cov = np.array(minimizer.covariance.tolist())
     corr = (cov / cov.diagonal()**.5).T / cov.diagonal()**.5
@@ -129,7 +128,7 @@ def multinomial_minimizer_plot(data, prefix=""):
     fig = relative_error_plot(m, data, N_DATA)
     fig.savefig(FIG_PATH / f"{prefix}br_relative_error.png")
 
-    fig = covariance_plot(data)
+    fig = correlations_plot(m["Multinomial"])
     fig.savefig(FIG_PATH / f"{prefix}default_correlations.png")
 
     fig = comparison_with_others(m, data,
@@ -148,13 +147,14 @@ def multinomial_minimizer_plot(data, prefix=""):
 def highly_correlated_fit():
     highly_corr_data = load_data(
         data_str=str(Path(__file__).parent / "data/highly_correlated"))
-    fig = covariance_plot(highly_corr_data)
-    fig.savefig(FIG_PATH / "highly_correlated.png")
 
 
     m, bin_counts_models = {}, {}
     for k, do_minimization in minimization_choices.items():
         m[k], bin_counts_models[k] = do_minimization(highly_corr_data, N_DATA)
+
+    fig = correlations_plot(m["Multinomial"])
+    fig.savefig(FIG_PATH / "highly_correlated.png")
 
     fig = br_estimates_plot(m, highly_corr_data, N_DATA)
     fig.set_size_inches(5, 6)
