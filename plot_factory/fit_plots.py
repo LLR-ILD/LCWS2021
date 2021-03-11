@@ -31,19 +31,13 @@ def br_estimates_plot(m, data, n_data):
 
 
 def relative_error_plot(m, data, n_data, no_legend=False):
-    m_dict, br_idx, param_names, ordered_X0 = prepare_data(m, data)
-    fig, ax = plt.subplots(figsize=(4, 3))
-    for i, (m_name, mm) in enumerate(m_dict.items()):
-        x = shift_x(i, br_idx, len(m_dict))
-        y, y_err = get_val_and_err(mm, param_names, m_name)
-        Deltas = y_err / y / 2 # Factor 2 to go from BR or CS to coupling.
-        ax.scatter(x, Deltas, marker="*", color=f"C{i+1}",  label=m_name)
-    ax.set_ylabel("$\Delta_X = g_X / g_X^{SM} - 1$")
-    ax.set_xticks(br_idx)
-    ax.set_xticklabels(param_names, rotation=90)
-    if not no_legend:
-        ax.legend()#bbox_to_anchor=(1.05, 1), loc="upper left")
+    """ Just a convenience wrapper.
+    """
+    fig = comparison_with_others(m, data,
+        compare_to_global_couplings=False, draw_lines=False)
+    ax = fig.get_axes()[0]
     ax.set_title(f"n_data={n_data}")
+    ax.get_legend().remove()
     fig.tight_layout()
     return fig
 
