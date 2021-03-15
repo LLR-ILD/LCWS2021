@@ -5,6 +5,7 @@ from pathlib import Path
 from types import SimpleNamespace
 import tqdm
 
+from fitting_util.ild import ild_tag
 from fitting_util.prepare import get_val_and_err
 import fitting_util.fit_setups as fs
 from load_data import load_data, default_brs
@@ -56,6 +57,7 @@ def uncertainty_toy_study(data, minimization_procedure, toy_dir,
 
     def toy_hist(br_name, toy_min_i, br_i, br_err_i):
         fig, ax = plt.subplots(figsize=(4, 4))
+        ild_tag(ax)
         ax.set_title(br_name)
         # ax.axvline(data.X0[data.x_names.index(br_name)], color="grey",
         ax.axvline(fit_starting_values[br_name], color="grey",

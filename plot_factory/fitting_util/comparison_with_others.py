@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+from .ild import ild_tag
 from .prepare import prepare_data, get_val_and_err, shift_x
 
 
@@ -102,6 +103,7 @@ def comparison_with_others(m, data, draw_lines=True,
     ):
     m_dict, br_idx, param_names, ordered_X0 = prepare_data(m, data)
     fig, ax = plt.subplots(figsize=(4, 3))
+    ild_tag(ax)
     for i, (m_name, mm) in enumerate(m_dict.items()):
         x = shift_x(i, br_idx, len(m_dict))
         y, y_err = get_val_and_err(mm, param_names, m_name)
@@ -120,6 +122,6 @@ def comparison_with_others(m, data, draw_lines=True,
     ax.set_ylabel("$\Delta_X = g_X / g_X^{SM} - 1$")
     ax.set_xticks(br_idx)
     ax.set_xticklabels(param_names, rotation=90)
-    ax.legend()
+    ax.legend(loc="center right")
     fig.tight_layout()
     return fig

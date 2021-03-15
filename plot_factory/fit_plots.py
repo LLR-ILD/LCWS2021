@@ -4,6 +4,7 @@ import pandas as pd
 from pathlib import Path
 
 from fitting_util.comparison_with_others import comparison_with_others
+from fitting_util.ild import ild_tag
 from fitting_util.prepare import prepare_data, get_val_and_err, shift_x
 import fitting_util.fit_setups as fs
 from load_data import default_brs, load_data
@@ -13,6 +14,7 @@ from paths import FIG_PATH, N_DATA
 def br_estimates_plot(m, data, n_data):
     m_dict, br_idx, param_names, ordered_X0 = prepare_data(m, data)
     fig, axs = plt.subplots(nrows=2, figsize=(4, 6), sharex=True)
+    ild_tag(axs[0])
     for i, (m_name, mm) in enumerate(m_dict.items()):
         x = shift_x(i, br_idx, len(m_dict))
         y, y_err = get_val_and_err(mm, param_names, m_name)
@@ -21,7 +23,7 @@ def br_estimates_plot(m, data, n_data):
         axs[1].scatter(x, y_err, marker="*", color=f"C{i+1}")
     axs[0].bar(br_idx, ordered_X0, alpha=.75, label="Input BRs", color="C0")
     axs[0].set_ylabel("BR estimate after MIGRAD")
-    axs[0].legend()
+    axs[0].legend(loc="center right")
     axs[1].set_ylabel("HESSE 67% CL interval")
     axs[1].set_xticks(br_idx)
     axs[1].set_xticklabels(param_names, rotation=90)
@@ -48,6 +50,7 @@ def correlations_plot(minimizer):
     corr = (cov / cov.diagonal()**.5).T / cov.diagonal()**.5
     corr = corr - np.eye(corr.shape[0]) # We do not want to color the diagonal.
     fig, ax = plt.subplots(figsize=(5, 5))
+    ild_tag(ax)
 
     ax.set_xticks(np.arange(cov.shape[1]))
     ax.set_yticks(np.arange(cov.shape[0]))

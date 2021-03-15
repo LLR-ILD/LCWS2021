@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
 
+from fitting_util.ild import ild_tag
 from load_data import load_data
 from paths import FIG_PATH, N_DATA
 
@@ -10,6 +11,7 @@ def plot_matrix(data, ax=None, omit_zero=True):
     M = data.M
     if ax is None:
         fig, ax = plt.subplots(figsize=(8, 10))
+    ild_tag(ax)
 
     def set_labels(ax):
         ax.set_yticks(np.arange(M.shape[0]))
@@ -44,6 +46,7 @@ def plot_matrix(data, ax=None, omit_zero=True):
 def probability_and_expected(data, prefix):
     def probability_matrix():
         fig, ax = plt.subplots(figsize=(8, 10))
+        ild_tag(ax)
         ax.set_title("Matrix entries P(Class|BR) [%]", fontsize=14)
         percent_matrix = copy.deepcopy(data)
         percent_matrix.M *= 100
@@ -54,6 +57,7 @@ def probability_and_expected(data, prefix):
     def expected_counts_matrix():
         n_events = N_DATA
         fig, ax = plt.subplots(figsize=(8, 10))
+        ild_tag(ax)
         ax.set_title((f"Expected counts for {n_events:,} Higgs events and SM BRs."), fontsize=14)
         expected_matrix = copy.deepcopy(data)
         expected_matrix.M = n_events * expected_matrix.M * expected_matrix.X0

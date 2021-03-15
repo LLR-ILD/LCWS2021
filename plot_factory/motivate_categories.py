@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numexpr
 import numpy as np
 
+from fitting_util.ild import ild_tag
 from paths import FIG_PATH, get_ev, higgs_decay_id
 
 
@@ -11,6 +12,7 @@ h_color = {h: mcs[i%len(mcs)] for i, h in enumerate(higgs_decay_id)}
 
 
 def create_pie(df, ax):
+    ild_tag(ax)
     per_decay = df.groupby("hDecay")["weight"].sum()
     per_decay = per_decay / per_decay.sum()
     if set(per_decay.index).issubset(set(higgs_decay_id.values())):
@@ -43,6 +45,7 @@ def build_up_category_cc(ev):
 
     nr = (len(sel_vars_cc) - 1) // 2 + 1
     fig, axs = plt.subplots(ncols=2, nrows=max(2, nr), figsize=(8, 3*nr))
+    ild_tag(axs[0][1])
     for i, (col, cut_val) in enumerate(sel_vars_cc.items()):
         ax = axs[i % nr][i // nr]
         if np.issubdtype(cat_cc[col].dtype, np.integer):
