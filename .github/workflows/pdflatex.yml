@@ -23,7 +23,7 @@ jobs:
         run: |
           git checkout --orphan gh-action-result/pdflatex
           git rm -rf .
-          git add presentation.pdf proceedings.pdf
+          git add presentation.pdf proceedings.pdf README.md
           git -c user.name='GitHub Action' -c user.email='action@github.com' commit -m "Built paper"
       - name: Push changes
         uses: ad-m/github-push-action@master
