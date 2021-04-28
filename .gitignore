@@ -26,6 +26,7 @@
 
 **/_minted-*/**
 presentation.pdf
+proceedings.pdf
 
 # Version control the toy plots only on an opt-in basis.
 **/toys_*/*.png
