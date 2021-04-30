@@ -10,6 +10,7 @@
     \usepackage{graphicx}
     \usepackage{hyperref}
     % \usepackage{lineno}\linenumbers
+    \usepackage{multicol}
     \usepackage[section]{placeins} % For per-chapter float placings. Package also provides \FloatBarrier.
     \usepackage{xspace}
 
@@ -193,6 +194,7 @@ outlined in section~\ref{subsec:simplifications}.
     \caption{
         Left: Expected contributions per class from each of the Higgs decay modes
         assuming the Standard Model branching ratios.
+        The class definitions are listed in the appendix.
         \\
         Right: Validation of the uncertainty from
         a fit on the expected event counts scenario against a toy study.
@@ -395,4 +397,112 @@ Federation and the Open Science GRID.
     \href{https://doi.org/10.5281/zenodo.4310361}{DOI: 10.5281/zenodo.4310361} (2021).
   }
   \end{thebibliography}\endgroup % cSpell:enable.
+
+  \newpage
+  \appendix
+  \section*{Appendix}
+  \subsection*{Class definitions}
+  The current class definitions are only a initial attempt.
+  They will be refined and extended.
+
+  An event belongs to the first class for which it passes the selection.
+  It is not necessary that a class has a high purity for a specific branching ratio.
+  It is more important that the proportions are different.
+
+  All variables are build exclusively on the Higgs-candidate part of the event.
+  That is why, for example, the isolated leptons
+  from the Z boson decay in $\mu \mu H$ do not contribute here.
+  Isolated leptons and isolated photons are identified through the
+  IsolatedLeptonTaggingProcessor
+  and IsolatedPhotonTaggingProcessor~\cite{ILCSoft}.
+
+  The flavor tagging is performed after forcing the (Higgs part of the)
+  event into two jets.
+  Through LCFIPlus~\cite{LCFIPlus} we obtain a score for b-likeliness ($btag$)
+  and for c-likeliness ($ctag$) for each of the two jets.
+  Each score lies between 0 and 1.
+  Their sum cannot exceed 1.
+  The sum is small when the jet is identified as likely stemming from a light quark.
+
+  {\small\begin{multicols}{2}
+  \begin{enumerate}
+      \item \texttt{cc}: Targets $H \to c \bar{c}$:
+      \begin{itemize}
+          \item No isolated leptons or photons.
+          \item $M_H > 100~\GeV$.
+          \item More than 20 Particle Flow Objects (PFOs).
+          \item $ctag1 > 0.5$, $ctag2 > 0.5$.
+      \end{itemize}
+      \item \texttt{bb\_tight}: Targets $H \to b \bar{b}$:
+      \begin{itemize}
+          \item No isolated leptons or photons.
+          \item $btag1 > 0.8$, $btag2 > 0.8$.
+      \end{itemize}
+      \item \texttt{bb}: Also targets $H \to b \bar{b}$:
+      \begin{itemize}
+          \item No isolated leptons or photons.
+          \item $btag1 > 0.8$.
+      \end{itemize}
+      \item \texttt{e2e2}: Targets $H \to \mu^+ \mu^-$:
+      \begin{itemize}
+          \item Has an opposite-charge pair of isolated muons.
+          \item $M_{\mu^+ \mu^-} \in \left[100~\GeV, 130~\GeV \right]$.
+      \end{itemize}
+      \item \texttt{aZ}: Targets $H \to \gamma Z$:
+      \begin{itemize}
+          \item Has an isolated photon.
+          \item $M_{\gamma} \in \left[20~\GeV, 50~\GeV \right]$.
+          \item $\left| \tn{cos}\theta_{\gamma} \right| < 0.9$.
+          \item $M_{\gamma} \in \left[75~\GeV, 100~\GeV \right]$,
+              where Z is everything but the photon.
+      \end{itemize}
+      \item \texttt{aa}: Targets $H \to \gamma \gamma$:
+      \begin{itemize}
+          \item Has an isolated photon and no isolated leptons.
+          \item Less than 15 PFOs.
+          \item $E_H > 125~\GeV$.
+          \item $\left| \tn{cos}\theta_{\gamma} \right| < 0.9$.
+          \item $E_{\gamma} > 35~\GeV$.
+      \end{itemize}
+      \item \texttt{tau}: Targets $H \to \tau^+ \tau^-$:
+      \begin{itemize}
+          \item Has no isolated leptons.
+          \item Less than 15 PFOs.
+      \end{itemize}
+      \item \texttt{light\_quark}: Targets $H \to gg$:
+      \begin{itemize}
+          \item Has no isolated leptons or photons.
+          \item $btag1 + ctag1 < 0.5$.
+      \end{itemize}
+      \item \texttt{light\_quark2}: Also targets $H \to gg$:
+      \begin{itemize}
+          \item Has no isolated leptons or photons.
+          \item $btag2 + ctag2 < 0.5$.
+      \end{itemize}
+      \item \texttt{isolep1}: Targets $H \to W^+ W^-$, $H \to \tau^+ \tau^-$:
+      \begin{itemize}
+          \item Exactly 1 isolated lepton.
+      \end{itemize}
+      \item \texttt{isolep2}: Targets $H \to W^+ W^-$, $H \to ZZ^*$:
+      \begin{itemize}
+          \item Exactly 2 isolated leptons.
+      \end{itemize}
+      \item \texttt{isolep2}: Targets $H \to ZZ^*$:
+      \begin{itemize}
+          \item More than 2 isolated leptons.
+      \end{itemize}
+      \item \texttt{isophoton1}: No specific target:
+      \begin{itemize}
+          \item Exactly 1 isolated photon.
+      \end{itemize}
+      \item \texttt{isophoton\_many}: No specific target:
+      \begin{itemize}
+          \item More than 1 isolated photon.
+      \end{itemize}
+      \item \texttt{rest}: No specific target:
+      \begin{itemize}
+          \item Takes whatever did not belong to any of the previous classes.
+      \end{itemize}
+  \end{enumerate}
+\end{multicols}}
 \end{document}
