@@ -68,18 +68,18 @@ and $Z \to \mu^+ \mu^-$ ($\mu \mu H$) can be selected through
 the Z boson, independent of the Higgs decay \cite{hRecoilIndependence}.
 
 Figure~\ref{fig:toys} (left) shows how such a sample can be partitioned
-into a number of boxes with each of the box selection efficiencies depending
+into a number of classes with each of the class selection efficiencies depending
 on the specific Higgs decay mode.
-The relative frequency of the number of events per box
+The relative frequency of the number of events per class
 depends on the Higgs branching ratios.
 An inclusive estimation of all branching ratios can be obtained
-through a fit on the box counts.
-The approach naturally lends itself to an extension with additional boxes
+through a fit on the class counts.
+The approach naturally lends itself to an extension with additional classes
 which target a beyond Standard Model Higgs decay.
 Additional decay modes can thus be excluded
 with an upper limit related to the sample size.
 
-The study is realized in the context of the
+The presented study is realized in the context of the
 International Linear Detector (ILD)~\cite{ILD_DBD,ILD_IDR}.
 The ILD detector concept is proposed for the International Linear Collider (ILC).
 The detector design is based on the particle flow approach
@@ -89,10 +89,11 @@ with a center-of-mass energy of $\sqrt{s}=250~\GeV$ (ILC250)
 are considered here.
 
 The fit is in a preliminary state.
-The simulation procedure is described in section~\ref{sec:simulation}.
-This includes a summary of the
+The simulation procedure is described in section~\ref{sec:simulation},
+a summary of the
 current simplifications in~\ref{subsec:simplifications}.
-First results, with some known shortcomings, are already available.
+Preliminary results from the fit,
+with some known shortcomings, are already available.
 They are given in section~\ref{sec:fit}.
 An outline of the necessary future work is presented
 in section~\ref{sec:future_work}.
@@ -101,7 +102,7 @@ Finally, the note is summarized in section~\ref{sec:conclusion}.
 \section{Simulation}\label{sec:simulation}
 We use samples produced by the ILD concept group since 2020.
 They are obtained from a detailed simulation of the ILC250
-with the SetA beam parameters.
+with the new SetA beam parameters~\cite{ILC_Staging_2017}.
 
 The events are generated at leading order using
 WHIZARD version 2.8.5~\cite{whizard,omega}.
@@ -126,37 +127,41 @@ For each of the nine considered main branching ratios of the Higgs boson,
 at least 400k simulated events are used.
 They are separately weighted and combined into a single sample
 with exactly 40k signal Higgs events.
-Different Higgs branching ratio scenarios are set through changing the weights.
+Different Higgs branching ratio scenarios are tested by changing the weights.
 
 Note that 40k Higgs events corresponds to about 10\% of the Higgs bosons
-produced in the long-running H-20 scenario of the ILC250.
-Even before selection inefficiencies, $\mu \mu H$ and $e e H$ account for
-less than 7\% of the produced Higgs bosons.
-It is mentioned in section \ref{sec:future_work}
-that we expect to be able to leverage the $\nu \bar{\nu} H$ sample.
-Future work will have to show if the 10\% sample size
-is a good estimation of this effect.
+produced in the long-running H-20 scenario of the ILC250~\cite{ILC_Scenarios}.
+Even before taking into account selection inefficiencies
+only less than 7\% of the produced Higgs bosons
+are in the $\mu \mu H$ and $e e H$ samples combined.
+As mentioned in section \ref{sec:future_work}
+we expect to be able to leverage the $\nu \bar{\nu} H$ sample.
+Future work will have to show if a 10\% sample size
+is a good estimation of the gain from the $\nu \bar{\nu} H$ sample.
 
 \section{Branching ratio uncertainties}\label{sec:fit}
 For each Higgs decay mode, a probability vector is
 constructed from the simulation.
 This vector stores the selection efficiency and the probability
-for the events from the chosen type to fall into each of the boxes
+for the events from the chosen type to fall into each of the classes
 that are constructed within the sample.
 The vectors can be collected as columns into a probability matrix $M$.
-% The expected background counts per box have to be calculated as well.
+% The expected background counts per class have to be calculated as well.
 
-A statistically independent sample (MC2) is used in place of
-the data counts per box.
-To test the adaptability of the fit, the Higgs branching ratios in MC2
+An equivalent but statistically independent test sample (MC2) is used as an input for
+the data counts per class.
+To evaluate the adaptability of the fit, the Higgs branching ratios in MC2
 can be altered, or new decay modes can be added.
 
 A fit is then performed with \texttt{iminuit}~\cite{Minuit,iminuit}.
 It seems reasonable to take the Standard Model Higgs branching ratios
 as the starting values of the fit.
 Based on a multinomial log-likelihood as its cost function,
-a prediction for the branching ratios and the corresponding covariance matrix
-are obtained.
+the 9 considered independent branching ratios of the Higgs boson
+are described through 8 parameters in the fit.
+We obtain a prediction for the 8 parameters
+and the corresponding covariance matrix.
+From those we get the mean values and uncertainties for the branching ratios.
 
 The result of this fit is shown in figure~\ref{fig:brs} for
 the SM branching ratios and an alternative scenario.
@@ -168,7 +173,7 @@ The uncertainties and correlations of the fit on the expected event counts
 are obtained through the second derivatives of the likelihood function
 at the fit optimum.
 For the toy study, samples are drawn from a Multinomial centered on the
-expected counts for each box.
+expected counts for each class.
 Then, a fit is performed for each of the samples, and the predicted
 branching ratio optima are collected.
 An example toy study on the $H \to b \bar{b}$ branching ratio is shown in
@@ -186,8 +191,8 @@ outlined in section~\ref{subsec:simplifications}.
     \includegraphics[width=0.49\textwidth, keepaspectratio]{intro_category_counts}
     \includegraphics[width=0.49\textwidth, keepaspectratio]{H_bb}
     \caption{
-        Left: Expected contributions per box from each of the Higgs decay modes.
-        The relative sizes assume the Standard Model branching ratios.
+        Left: Expected contributions per class from each of the Higgs decay modes
+        assuming the Standard Model branching ratios.
         \\
         Right: Validation of the uncertainty from
         a fit on the expected event counts scenario against a toy study.
@@ -210,12 +215,12 @@ outlined in section~\ref{subsec:simplifications}.
     \includegraphics[width=0.49\textwidth, keepaspectratio]{br_estimates}
     \includegraphics[width=0.49\textwidth, keepaspectratio]{changed_br_estimates}
     \caption{
-        Top row: Branching ratios assumed for the generation of the counts per box.
+        Top row: Branching ratios assumed for the generation of the counts per class.
         Fit optimum and its uncertainty as orange error bars.
         The starting values of the fit are
         the SM Higgs branching ratios for both cases.
         \\
-        Bottom row: The absolute fit uncertainties per parameter.
+        Bottom row: The absolute statistical fit uncertainties per branching ratio.
         \\
         Left: SM branching ratios.
         \\
@@ -230,7 +235,7 @@ outlined in section~\ref{subsec:simplifications}.
     \centering
     \begin{tabular}{lrrr}
         \toprule
-        {} &  SM BR &  minimum &  $\sigma$ \\
+        {} &  SM BR &  fitted BR &  $\sigma_{\tn{stat}}$ \\
         \midrule
         $H\to cc$           &  2.718 &    2.733 &     0.210 \\
         $H\to bb$           & 57.720 &   57.743 &     0.321 \\
@@ -245,7 +250,7 @@ outlined in section~\ref{subsec:simplifications}.
         \end{tabular}
     \caption{
         Preliminary results of an \texttt{MINUIT} fit on the expected event counts.
-        In \%.
+        All numbers in \%. \\
         The many simplifications that go into these numbers
         are explained in the main text.
         }\label{tab:br_uncertainties}
@@ -274,16 +279,16 @@ sample should help decrease the uncertainties.
 The $\nu \nu H$ sample should be added to the combined fit,
 after choosing a good pre-selection.
 
-The current boxes are far from ideal.
-The rest box should be reserved almost exclusively for
+The current classes are far from ideal.
+The rest class should be reserved almost exclusively for
 background (or unexpected Higgs decay) events.
 For some of the Higgs decays, including $H \to W^+ W^-$,
-no proper boxes are designed yet.
+no proper classes are designed yet.
 
 A mechanism that alerts the analyzer in the case of non-SM Higgs decays
 ($H \to \mu^+\tau^-, H \to b\bar{c}$, \ldots)
 has to be established.
-This could be through one or more additional boxes,
+This could be through one or more additional classes,
 or through a comparison of the value of the likelihood at the fit minimum
 with the expected value.
 
@@ -331,6 +336,11 @@ Federation and the Open Science GRID.
     ``The Calorimetry at the future e+ e- linear collider'',
     \href{https://arxiv.org/abs/hep-ex/0202004}{arXiv:hep-ex/0202004} (2002).
   }
+  \bibitem{ILC_Staging_2017}{
+    L.~Evans, S.~Michizono,
+    ``The International Linear Collider Machine Staging Report 2017'',
+    \href{https://arxiv.org/abs/1711.00568}{arXiv:1711.00568} (2017).
+  }
   \bibitem{whizard}{
     W.~Kilian, T.~Ohl, J.~Reuter,
     ``WHIZARD: Simulating Multi-Particle Processes at LHC and ILC'',
@@ -368,6 +378,11 @@ Federation and the Open Science GRID.
     T.~Suehara, T.~Tanabe,
     ``LCFIPlus: A Framework for Jet Analysis in Linear Collider Studies'',
     \href{https://arxiv.org/abs/1506.08371}{Nucl. Instrum. Meth. A808 109–116} (2016).
+  }
+  \bibitem{ILC_Scenarios}{
+    T.~Barklow et. al.,
+    ``ILC Operating Scenarios'',
+    \href{https://arxiv.org/abs/1506.07830}{arXiv:1506.07830} (2015).
   }
   \bibitem{Minuit}{
     F.~Fames, M.~Roos,
