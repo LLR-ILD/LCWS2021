@@ -3,6 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
+from types import SimpleNamespace
 
 from changed_brs import changed_brs
 import fitting_util.fit_setups as fs
@@ -54,6 +55,15 @@ def main():
 
         fig = vincent_plot(m, data, N_DATA)
         fig.savefig(folder / f"{prefix}vincent_plot.png")
+
+    toy_dict = vars(data)
+    rng = np.random.default_rng(seed=0)
+    toy_dict["Y"] = rng.multinomial(N_DATA, data.Y / sum(data.Y))
+    toy_data = SimpleNamespace(**toy_dict)
+    m = {"Multinomial": fs.binomial_minimization_with_limits(data, N_DATA)[0]}
+    fig = vincent_plot(m, toy_data, N_DATA)
+    fig.get_axes()[0].set_ylim((0.4, 1.6))
+    fig.savefig(folder / f"vincent_toy_plot.png")
 
 
 
