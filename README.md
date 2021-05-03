@@ -1,5 +1,10 @@
 # A combined fit to the Higgs Branching Ratios at ILD
 
+The pdf versions of the presentation and the proceeding are in the
+[gh-action-result/pdflatex branch](https://github.com/LLR-ILD/LCWS2021/tree/gh-action-result/pdflatex).
+
+## Contribution details
+
 [LCWS 2021 contribution page](https://indico.cern.ch/event/995633/contributions/4255297/).
 
 - **Comments:** Could be considered for the Student/Young Researcher (Bachelor/Master/Young PhD) track for work in progress.
