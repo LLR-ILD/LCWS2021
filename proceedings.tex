@@ -63,16 +63,16 @@ $\sqrt{s}\approx250~\GeV$.
 With the Higgsstrahlung process at a Higgs factory
 it is possible to construct an unbiased sample
 in which each type of Higgs decay occurs with the probability given by
-its branching ratio realized in nature~\cite{HiggsBR_LCWS2019}.
-Higgsstrahlung events with $Z \to e^+e^-$ ($e e H$)
-and $Z \to \mu^+ \mu^-$ ($\mu \mu H$) can be selected through
+its branching ratio (BR) realized in nature~\cite{HiggsBR_LCWS2019}.
+Higgsstrahlung events with $Z \to e^+ e^-$ and $Z \to \mu^+ \mu^-$
+can be selected through
 the Z boson, independent of the Higgs decay \cite{hRecoilIndependence}.
 
 Figure~\ref{fig:toys} (left) shows how such a sample can be partitioned
 into a number of classes with each of the class selection efficiencies depending
 on the specific Higgs decay mode.
 The relative frequency of the number of events per class
-depends on the Higgs branching ratios.
+depends on the Higgs BRs.
 An inclusive estimation of all branching ratios can be obtained
 through a fit on the class counts.
 The approach naturally lends itself to an extension with additional classes
@@ -124,17 +124,17 @@ While it is not a realistic scenario,
 this pure-Higgs sample can provide a first idea
 of the precision and adaptability of the method.
 
-For each of the nine considered main branching ratios of the Higgs boson,
+For each of the nine considered main BRs of the Higgs boson,
 at least 400k simulated events are used.
 They are separately weighted and combined into a single sample
 with exactly 40k signal Higgs events.
-Different Higgs branching ratio scenarios are tested by changing the weights.
+Different Higgs BR scenarios are tested by changing the weights.
 
 Note that 40k Higgs events corresponds to about 10\% of the Higgs bosons
 produced in the long-running H-20 scenario of the ILC250~\cite{ILC_Scenarios}.
 Even before taking into account selection inefficiencies
 only less than 7\% of the produced Higgs bosons
-are in the $\mu \mu H$ and $e e H$ samples combined.
+are in the $Z \to e^+ e^-$ and $Z \to \mu^+ \mu^-$ samples combined.
 As mentioned in section \ref{sec:future_work}
 we expect to be able to leverage the $\nu \bar{\nu} H$ sample.
 Future work will have to show if a 10\% sample size
@@ -151,29 +151,34 @@ The vectors can be collected as columns into a probability matrix $M$.
 
 An equivalent but statistically independent test sample (MC2) is used as an input for
 the data counts per class.
-To evaluate the adaptability of the fit, the Higgs branching ratios in MC2
+To evaluate the adaptability of the fit, the Higgs BRs in MC2
 can be altered, or new decay modes can be added.
 
 A fit is then performed with \texttt{iminuit}~\cite{Minuit,iminuit}.
-It seems reasonable to take the Standard Model Higgs branching ratios
+The Standard Model (SM) Higgs branching ratios (BRs)
+are taken
 as the starting values of the fit.
 Based on a multinomial log-likelihood as its cost function,
-the 9 considered independent branching ratios of the Higgs boson
+the 9 considered independent BRs of the Higgs boson
 are described through 8 parameters in the fit.
 We obtain a prediction for the 8 parameters
 and the corresponding covariance matrix.
-From those we get the mean values and uncertainties for the branching ratios.
+From those we get the mean values and uncertainties for the BRs.
 
 The result of this fit is shown in figure~\ref{fig:brs} for
-the SM branching ratios and an alternative scenario.
+the SM BRs and an alternative scenario.
 Since the probability vectors of the decay modes are different enough,
-the fit moves to the altered branching ratios without any problems.
+the fit moves to the altered BRs without any problems.
+The fit not landing at the altered BRs
+would have suggested that the defined classes
+do not have sufficient discriminating power
+between some of the BRs.
 
-The uncertainties on the branching ratios can be tested in a toy study.
+The uncertainties on the BRs can be tested in a toy study.
 The uncertainties and correlations of the fit on the expected event counts
 are obtained through the second derivatives of the likelihood function
 at the fit optimum.
-For the toy study, samples are drawn from a Multinomial centered on the
+For the toy study, samples are drawn from a multinomial distribution centered on the
 expected counts for each class.
 Then, a fit is performed for each of the samples, and the predicted
 branching ratio optima are collected.
@@ -208,7 +213,7 @@ outlined in section~\ref{subsec:simplifications}.
         the fit on the expected event counts, as quoted by \texttt{MINUIT}.
         The orange histogram contains the fit optima from
         10k fits on event counts varied according to
-        a Multinomial distribution centered on the expected event counts.
+        a multinomial distribution centered on the expected event counts.
     }\label{fig:toys}
 \end{figure}
 
@@ -220,13 +225,13 @@ outlined in section~\ref{subsec:simplifications}.
         Top row: Branching ratios assumed for the generation of the counts per class.
         Fit optimum and its uncertainty as orange error bars.
         The starting values of the fit are
-        the SM Higgs branching ratios for both cases.
+        the SM Higgs BRs for both cases.
         \\
         Bottom row: The absolute statistical fit uncertainties per branching ratio.
         \\
-        Left: SM branching ratios.
+        Left: SM BRs.
         \\
-        Right: The Higgs branching ratios in the simulation are the SM values
+        Right: The Higgs BRs in the simulation are the SM values
         with the changes
         $BR(H \to b \bar{b}) \searrow 15\%$, $BR(H \to W^+W^-) \nearrow 15\%$.
         The fit is able to move to the new minimum.
@@ -252,7 +257,7 @@ outlined in section~\ref{subsec:simplifications}.
         \end{tabular}
     \caption{
         Preliminary results of an \texttt{MINUIT} fit on the expected event counts.
-        All numbers in \%. \\
+        All numbers in percent. \\
         The many simplifications that go into these numbers
         are explained in the main text.
         }\label{tab:br_uncertainties}
@@ -264,7 +269,7 @@ Higgs-free events passing the selection.
 Then, the proper cross sections and polarizations foreseen at ILC
 can be applied.
 % It should be tested whether it is better to perform the fit separately
-% for the $\mu \mu H$ and $e e H$ samples, or to combine their cost functions
+% for the $Z \to e^+ e^-$ and $Z \to \mu^+ \mu^-$ samples, or to combine their cost functions
 % in a single fit.
 % The combined uncertainties should be smaller.
 % But it might be more powerful to separately provide
@@ -272,13 +277,13 @@ can be applied.
 % to a global measurement combination fit with all other Higgs coupling
 % measurements from LHC and the Higgs factory.
 
-In the $\nu \nu H$ sample it is necessary to perform a pre-selection based on
+In the $\nu \bar{\nu} H$ sample it is necessary to perform a pre-selection based on
 the Higgs-part of the event.
 Thus, it alone cannot be used for a branching ratio derivation with
 an unconditional upper limit on the unobserved branching ratio.
 But in combination with the other samples, the larger statistics of this
 sample should help decrease the uncertainties.
-The $\nu \nu H$ sample should be added to the combined fit,
+The $\nu \bar{\nu} H$ sample should be added to the combined fit,
 after choosing a good pre-selection.
 
 The current classes are far from ideal.
@@ -354,8 +359,8 @@ Federation and the Open Science GRID.
     \href{https://arxiv.org/abs/hep-ph/0102195}{arXiv:hep-ph/0102195} (2001).
   }
   \bibitem{pythia}{
-    T.~Sjostrand, S.~Mrenna, P.~Skanda,
-    ``Pythia 6.4 physicas and manual'',
+    T.~Sjostrand, S.~Mrenna, P.~Skands,
+    ``Pythia 6.4 physics and manual'',
     \href{JHEP 05 026}{arXiv:hep-ph/0603175} (2006).
   }
   \bibitem{DD4hep}{
@@ -402,14 +407,15 @@ Federation and the Open Science GRID.
   \appendix
   \section*{Appendix}
   \subsection*{Class definitions}
-  The current class definitions are only a initial attempt.
+  The current class definitions are only an initial attempt.
   They will be refined and extended.
 
   An event belongs to the first class for which it passes the selection.
+  The classes selections are applied in the order listed below.
   It is not necessary that a class has a high purity for a specific branching ratio.
   It is more important that the proportions are different.
 
-  All variables are build exclusively on the Higgs-candidate part of the event.
+  All variables are built exclusively on the Higgs-candidate part of the event.
   That is why, for example, the isolated leptons
   from the Z boson decay in $\mu \mu H$ do not contribute here.
   Isolated leptons and isolated photons are identified through the
