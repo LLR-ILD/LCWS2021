@@ -117,6 +117,17 @@ which includes PandoraPFA~\cite{PandoraPFA} for
 the construction of particle flow objects
 and LCFIPlus~\cite{LCFIPlus} for flavor tagging.
 
+As the simulated data set has to fulfil two tasks,
+it is split into two equal but statistically independent parts.
+The first part (MC1) is needed to set up the fit.
+The second part (MC2) is used to generate the counts per class.
+It serves as a placeholder for the detector data.
+A separate sample for this task is necessary
+to evaluate the bias
+that the method has due to the limited size of MC1.
+By changing the BRs in MC2, through changing the event weights,
+the adaptability of the fit is validated.
+
 \subsection{Current simplifications}\label{subsec:simplifications}
 Results shown here are obtained without considering background processes.
 As signal channel, $\nu \bar{\nu} H$ is used without a pre-selection step.
@@ -142,17 +153,14 @@ is a good estimation of the gain from the $\nu \bar{\nu} H$ sample.
 
 \section{Branching ratio uncertainties}\label{sec:fit}
 For each Higgs decay mode, a probability vector is
-constructed from the simulation.
+constructed from the simulation (MC1).
 This vector stores the selection efficiency and the probability
 for the events from the chosen type to fall into each of the classes
 that are constructed within the sample.
 The vectors can be collected as columns into a probability matrix $M$.
 % The expected background counts per class have to be calculated as well.
-
-An equivalent but statistically independent test sample (MC2) is used as an input for
-the data counts per class.
-To evaluate the adaptability of the fit, the Higgs BRs in MC2
-can be altered, or new decay modes can be added.
+Data counts are generated from the test sample (MC2)
+as placeholders for future detector data.
 
 A fit is then performed with \texttt{iminuit}~\cite{Minuit,iminuit}.
 The Standard Model (SM) Higgs branching ratios (BRs)
@@ -194,8 +202,8 @@ outlined in section~\ref{subsec:simplifications}.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.47\textwidth, keepaspectratio]{intro_category_counts}
-    \includegraphics[width=0.47\textwidth, keepaspectratio]{H_bb}
+    \includegraphics[width=0.49\textwidth, keepaspectratio]{intro_category_counts}
+    \includegraphics[width=0.49\textwidth, keepaspectratio]{H_bb}
     \caption{
         Left: Expected contributions per class from each of the Higgs decay modes
         assuming the Standard Model branching ratios.
