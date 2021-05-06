@@ -68,7 +68,7 @@ Higgsstrahlung events with $Z \to e^+ e^-$ and $Z \to \mu^+ \mu^-$
 can be selected through
 the Z boson, independent of the Higgs decay \cite{hRecoilIndependence}.
 
-Figure~\ref{fig:toys} (left) shows how such a sample can be partitioned
+Figure~\ref{fig:box_counts} shows how such a sample can be partitioned
 into a number of classes with each of the class selection efficiencies depending
 on the specific Higgs decay mode.
 The relative frequency of the number of events per class
@@ -83,26 +83,11 @@ with an upper limit related to the sample size.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.49\textwidth, keepaspectratio]{intro_category_counts}
-    \includegraphics[width=0.49\textwidth, keepaspectratio]{H_bb}
     \caption{
-        Left: Expected contributions per class from each of the Higgs decay modes
+        Expected contributions per class from each of the Higgs decay modes
         assuming the Standard Model branching ratios.
         The class definitions are listed in the appendix.
-        \\
-        Right: Validation of the uncertainty from
-        a fit on the expected event counts scenario against a toy study.
-        The dotted grey line indicates the SM value of
-        the $H \to b \bar{b}$ coupling in the simulation.
-        The black line indicates the optimum of a fit on
-        the expected event counts.
-        It was validated that the difference between these two lines
-        is only due to limited Monte Carlo statistics.
-        The blue gaussian curve has as standard deviation the uncertainty of
-        the fit on the expected event counts, as quoted by \texttt{MINUIT}.
-        The orange histogram contains the fit optima from
-        10k fits on event counts varied according to
-        a multinomial distribution centered on the expected event counts.
-    }\label{fig:toys}
+    }\label{fig:box_counts}
 \end{figure}
 
 The presented study is realized in the context of the
@@ -177,26 +162,6 @@ Future work will have to show if a 10\% sample size
 is a good estimation of the gain from the $\nu \bar{\nu} H$ sample.
 
 \section{Branching ratio uncertainties}\label{sec:fit}
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.49\textwidth, keepaspectratio]{br_estimates}
-    \includegraphics[width=0.49\textwidth, keepaspectratio]{changed_br_estimates}
-    \caption{
-        Top row: Branching ratios assumed for the generation of the counts per class.
-        Fit optimum and its uncertainty as orange error bars.
-        The starting values of the fit are
-        the SM Higgs BRs for both cases.
-        \\
-        Bottom row: The absolute statistical fit uncertainties per branching ratio.
-        \\
-        Left: SM BRs.
-        \\
-        Right: The Higgs BRs in the simulation are the SM values
-        with the changes
-        $BR(H \to b \bar{b}) \searrow 15\%$, $BR(H \to W^+W^-) \nearrow 15\%$.
-        The fit is able to move to the new minimum.
-    }\label{fig:brs}
-\end{figure}
 
 For each Higgs decay mode, a probability vector is
 constructed from the simulation (MC1).
@@ -221,12 +186,31 @@ From those we get the mean values and uncertainties for the BRs.
 
 The result of this fit is shown in figure~\ref{fig:brs} for
 the SM BRs and an alternative scenario.
+To have a change that can be comfortably spotted by eye,
+the alternative scenario has the $BR(H \to b \bar{b})$ decreased by $15\%$,
+which is fully compensated by $BR(H \to W^+W^-)$.
 Since the probability vectors of the decay modes are different enough,
 the fit moves to the altered BRs without any problems.
 The fit not landing at the altered BRs
 would have suggested that the defined classes
 do not have sufficient discriminating power
 between some of the BRs.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.49\textwidth, keepaspectratio]{br_estimates}
+    \includegraphics[width=0.49\textwidth, keepaspectratio]{changed_br_estimates}
+    \caption{
+        Top row: Branching ratios assumed for the generation of the counts per class.
+        Fit optimum and its uncertainty are given as orange error bars.
+        The starting values of the fit are always the SM Higgs BRs.
+        The considered scenarios are the SM BRs (left)
+        and a BSM scenario described in the text.
+        \\
+        Bottom row: The absolute statistical uncertainties
+        of the fit per branching ratio.
+    }\label{fig:brs}
+\end{figure}
 
 The uncertainties on the BRs can be tested in a toy study.
 The uncertainties and correlations of the fit on the expected event counts
@@ -237,9 +221,29 @@ expected counts for each class.
 Then, a fit is performed for each of the samples, and the predicted
 branching ratio optima are collected.
 An example toy study on the $H \to b \bar{b}$ branching ratio is shown in
-figure~\ref{fig:toys} (right).
+figure~\ref{fig:toys}.
+The dotted grey line indicates the SM value of
+the $H \to b \bar{b}$ coupling in the simulation.
+The black line indicates the optimum of a fit on
+the expected event counts.
+It was validated that the difference between these two lines
+is only due to limited Monte Carlo statistics.
+The blue Gaussian curve has as standard deviation the uncertainty of
+the fit on the expected event counts, as quoted by \texttt{MINUIT}.
+The orange histogram contains the fit optima from
+10k fits on event counts varied according to
+a multinomial distribution centered on the expected event counts.
 The values from the toy study agree well with those anticipated
 from the fit on the expected event counts.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.49\textwidth, keepaspectratio]{H_bb}
+    \caption{
+        Validation of the uncertainty from
+        a fit on the expected event counts scenario against a toy study.
+    }\label{fig:toys}
+\end{figure}
 
 The projected (absolute) $1 \sigma$-uncertainties for the Higgs branching ratios
 are listed in table~\ref{tab:br_uncertainties}.
@@ -264,10 +268,12 @@ outlined in section~\ref{subsec:simplifications}.
         \bottomrule
         \end{tabular}
     \caption{
-        Preliminary results of an \texttt{MINUIT} fit on the expected event counts.
-        All numbers in percent. \\
-        The many simplifications that go into these numbers
-        are explained in the main text.
+        Preliminary results of a \texttt{MINUIT} fit on the expected event counts.
+        The table gives fitted values of the Higgs BRs
+        and their absolute statistical uncertainties.
+        All numbers are given in percent. \\
+        % The many simplifications that go into these numbers
+        % are explained in the main text.
         }\label{tab:br_uncertainties}
 \end{table}
 
